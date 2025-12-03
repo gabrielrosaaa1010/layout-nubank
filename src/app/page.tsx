@@ -144,36 +144,26 @@ export default function Home() {
     }
   };
 
-  const handleFinalizePurchase = () => {
-  const selectedValue = selectedRange || selectedPrice;
-
-  if (!selectedValue) return;
+const handleFinalizePurchase = () => {
+  if (!selectedPlan || !paymentMethod) return;
 
   let checkoutUrl = "";
 
-  switch (selectedValue) {
-    case "1000-2000":
-    case 1000:
-      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PJ";
-      break;
-
-    case "2000-5000":
-    case 2000:
-      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PT";
-      break;
-
-    case "5000-10000":
-    case 5000:
-      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";
-      break;
-
-    default:
-      return;
+  // Verifica qual plano foi selecionado
+  if (selectedPlan.priceValue === 27.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PJ";  // PLANO 1
+  } 
+  else if (selectedPlan.priceValue === 56.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PT";  // PLANO 2
+  } 
+  else if (selectedPlan.priceValue === 86.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";  // PLANO 3
   }
 
-  window.location.href = checkoutUrl;
+  if (checkoutUrl) {
+    window.location.href = checkoutUrl;
+  }
 };
-  };
 
   const canProceedStep1 = selectedInstitution !== null;
   const canProceedStep2 = cpf.replace(/\D/g, "").length === 11 && accountNumber && accountDigit;
