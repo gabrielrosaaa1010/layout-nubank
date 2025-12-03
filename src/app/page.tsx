@@ -145,16 +145,34 @@ export default function Home() {
   };
 
   const handleFinalizePurchase = () => {
-    if (!selectedPlan || !paymentMethod) return;
+  const selectedValue = selectedRange || selectedPrice;
 
-    // Redirecionar para Perfect Pay com os dados do pedido
-    const perfectPayUrl = "https://pay.perfectpay.com.br/checkout";
-    
-    // Construir URL com parâmetros (você precisará substituir pelos seus IDs reais da Perfect Pay)
-    const checkoutUrl = `${perfectPayUrl}?product_id=SEU_PRODUCT_ID&amount=${selectedPlan.priceValue.toFixed(2)}`;
-    
-    // Abrir checkout da Perfect Pay em nova aba
-    window.open(checkoutUrl, "_blank");
+  if (!selectedValue) return;
+
+  let checkoutUrl = "";
+
+  switch (selectedValue) {
+    case "1000-2000":
+    case 1000:
+      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PJ";
+      break;
+
+    case "2000-5000":
+    case 2000:
+      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PT";
+      break;
+
+    case "5000-10000":
+    case 5000:
+      checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";
+      break;
+
+    default:
+      return;
+  }
+
+  window.location.href = checkoutUrl;
+};
   };
 
   const canProceedStep1 = selectedInstitution !== null;
