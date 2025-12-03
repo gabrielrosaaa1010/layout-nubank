@@ -145,17 +145,20 @@ export default function Home() {
   };
 
   const handleFinalizePurchase = () => {
-    if (!selectedPlan || !paymentMethod) return;
+  if (!selectedPlan || !paymentMethod) return;
 
-    // Redirecionar para Perfect Pay com os dados do pedido
-    const perfectPayUrl = "https://pay.perfectpay.com.br/checkout";
-    
-    // Construir URL com parâmetros (você precisará substituir pelos seus IDs reais da Perfect Pay)
-    const checkoutUrl = `${perfectPayUrl}?product_id=SEU_PRODUCT_ID&amount=${selectedPlan.priceValue.toFixed(2)}`;
-    
-    // Abrir checkout da Perfect Pay em nova aba
-    window.open(checkoutUrl, "_blank");
-  };
+  let checkoutUrl = "";
+
+  // Verifica qual plano foi selecionado
+  if (selectedPlan.priceValue === 27.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PJ";  // PLANO 1
+  } 
+  else if (selectedPlan.priceValue === 56.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PT";  // PLANO 2
+  } 
+  else if (selectedPlan.priceValue === 86.99) {
+    checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";  // PLANO 3
+  }
 
   const canProceedStep1 = selectedInstitution !== null;
   const canProceedStep2 = cpf.replace(/\D/g, "").length === 11 && accountNumber && accountDigit;
