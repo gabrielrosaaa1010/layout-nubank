@@ -155,17 +155,17 @@ export default function Home() {
     case "1000-2000":
     case 1000:
       checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PJ";
-      break;
+      ;
 
     case "2000-5000":
     case 2000:
       checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46PT";
-      break;
+      ;
 
     case "5000-10000":
     case 5000:
       checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";
-      break;
+      ;
 
     default:
       return;
