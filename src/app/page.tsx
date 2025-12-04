@@ -19,7 +19,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState(600);
   const [showModal, setShowModal] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState<PlanData | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<PlanData | null>(null);}
   
   // Form data
   const [selectedInstitution, setSelectedInstitution] = useState<Institution>(null);
