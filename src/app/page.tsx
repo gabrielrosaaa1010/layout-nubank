@@ -160,10 +160,10 @@ export default function Home() {
     checkoutUrl = "https://go.perfectpay.com.br/PPU38CQ46Q2";  // PLANO 3
   }
 
-  const canProceedStep1 = selectedInstitution !== null;
+    {  const canProceedStep1 = selectedInstitution !== null;
   const canProceedStep2 = cpf.replace(/\D/g, "").length === 11 && accountNumber && accountDigit;
 
-  return (
+  return }(
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#820AD1] to-[#A855F7] text-white">
